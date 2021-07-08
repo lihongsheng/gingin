@@ -1,4 +1,6 @@
 port: 9081
+#release,debug,test
+mode: release
 mysql:
   host: "127.0.0.1"
   port: 3306

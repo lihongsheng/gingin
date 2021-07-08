@@ -24,6 +24,7 @@ type redis struct {
 }
 type configMap struct {
 	Port int `yaml:"port"`
+	Mode string `yaml:"mode"`
 	Redis redis `yaml:"redis"`
 	Mysql mysql `yaml:"mysql"`
 }
