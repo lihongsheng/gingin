@@ -33,7 +33,7 @@ var ConfigMap *configMap
 func init() {
 	ConfigMap = new(configMap)
 	fmt.Println("解析配置文件")
-	yamlFile, err :=ioutil.ReadFile("config/config.yaml")
+	yamlFile, err :=ioutil.ReadFile("resource/config.yaml")
 	if err != nil {
 		log.Printf("yamlFile.Get err #%v ", err)
 		panic("读取配置出差" + fmt.Sprintf("#%v ", err))
