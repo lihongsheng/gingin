@@ -6,6 +6,7 @@ import (
 	"gingin/types"
 	"github.com/gin-gonic/gin"
 	"strconv"
+    _ "go.etcd.io/etcd/client/v3"
 )
 
 func main() {
