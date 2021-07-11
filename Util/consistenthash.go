@@ -37,51 +37,30 @@ func NewHashMap(f HashFun) *hashMap {
 	return h
 }
 
+//添加节点
 func (h *hashMap) Add(str string)  {
 	key := h.Hash(str)
-	//hl := int(hashLen)
 	h.addSlice(key)
 	h.Mapping[key] = str
-	//for keyMultiple > 0 {
-	//	keyMultiple--
-	//	key = key + key
-	//	if key < hl {
-	//		h.addSlice(key)
-	//		h.Mapping[key] = str
-	//	} else {
-	//		key = hl - key
-	//		h.addSlice(key)
-	//		h.Mapping[key] = str
-	//	}
-	//}
 }
-
+//加入和排序节点的可以
 func (h *hashMap) addSlice(key int)  {
-	l := len(h.HashValue)
+	//l := len(h.HashValue)
 	if len(h.HashValue) == 0 {
 		h.HashValue = append(h.HashValue,key)
 	} else {
-		var tmp int
+		tmp := key
 		for i, v := range h.HashValue{
-			if (tmp == 0) {
-				if key > v && i < (l-1) && key < h.HashValue[(i+1)] {
-					tmp = key
-				}
-			} else {
+			if tmp < v {
 				t := h.HashValue[i]
 				h.HashValue[i] = tmp
 				tmp = t
 			}
 		}
-		if tmp == 0 {
-			h.HashValue = append(h.HashValue,key)
-		} else {
-			h.HashValue = append(h.HashValue,tmp)
-		}
-
+		h.HashValue = append(h.HashValue,tmp)
 	}
 }
-
+//获取可以所属的节点
 func (h *hashMap) Get(str string) string  {
 	k :=h.Hash(str)
 	key := h.HashValue[0]

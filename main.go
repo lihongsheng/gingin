@@ -22,6 +22,10 @@ func main() {
 		h.Add(v)
 	}
 	fmt.Println(h.Get("10.10.10.1"))
+
+	for _, v := range h.HashValue{
+		fmt.Println("v:%s",v)
+	}
 }
 
 func bootStrat() {
