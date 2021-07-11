@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"gingin/Util"
 	"gingin/config"
 	"gingin/types"
 	"github.com/gin-gonic/gin"
@@ -15,7 +16,12 @@ func main() {
 	//user,err := userModel.FindMany("he",1,10)
 	//fmt.Println(user)
 	//fmt.Println(err)
-	bootStrat()
+	h := Util.NewHashMap(Util.HashCrc)
+	ipList := []string{"192.168.0.1","192.168.0.2","192.168.0.3","192.168.0.4","192.168.0.1#1","192.168.0.2#2","192.168.0.3#3","192.168.0.4#4"}
+	for _, v := range ipList{
+		h.Add(v)
+	}
+	fmt.Println(h.Get("10.10.10.1"))
 }
 
 func bootStrat() {
@@ -40,4 +46,5 @@ func bootStrat() {
 	})
 	fmt.Println("start go"+addr)
 	_ = r.Run(addr)
+
 }
