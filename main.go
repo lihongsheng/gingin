@@ -5,18 +5,12 @@ import (
 	"gingin/config"
 	"gingin/types"
 	"github.com/gin-gonic/gin"
+	_ "go.etcd.io/etcd/client/v3"
 	"strconv"
-    _ "go.etcd.io/etcd/client/v3"
 )
 
 func main() {
-	//初始化DB，后期单独放到bootstrat.go里【启动类】
-	 //model.InitDB()
-	//userModel := new(model.UserModel)
-	//user,err := userModel.FindMany("he",1,10)
-	//fmt.Println(user)
-	//fmt.Println(err)
-	bootStrat()
+
 }
 
 func bootStrat() {
@@ -41,4 +35,5 @@ func bootStrat() {
 	})
 	fmt.Println("start go"+addr)
 	_ = r.Run(addr)
+
 }

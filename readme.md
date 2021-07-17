@@ -14,6 +14,7 @@
 
 ### 资料链接
 [官方文档](https://doczhcn.gitbook.io/etcd/index/index/api_grpc_gateway)
-[etcd使用方式](https://www.bookstack.cn/read/For-learning-Go-Tutorial/src-chapter14-01.0.md#9rasul)
 [etcd使用方式http](https://blog.csdn.net/meifannao789456/article/details/103480842
 [go文档](https://cyent.github.io/golang/datatype/struct_anon/)
+[常见使用方式](https://www.bookstack.cn/read/For-learning-Go-Tutorial/src-chapter14-01.0.md#9rasul)
+[常见使用方式http](https://segmentfault.com/a/1190000005649865)
