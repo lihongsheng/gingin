@@ -10,11 +10,11 @@ type UserModel struct {
 }
 type User struct {
 	gorm.Model
-	UserName string `gorm:"type:varchar(20);not null " json:"username" validate:"required,min=4,max=12" label:"用户名"`
+	UserName string `gorm:"type:varchar(20);not null " json:"user_name" validate:"required,min=4,max=12" label:"用户名"`
 	Password string `gorm:"type:varchar(500);not null" json:"password" validate:"required,min=6,max=120" label:"密码"`
 	Status   int    `gorm:"type:int;DEFAULT:2" json:"status" validate:"required,gte=2" label:"角色码"`
-	CreateT  int    `gorm:"type:int;"`
-	UpdateT  int    `gorm:"type:int;"`
+	//CreateT  int    `gorm:"type:int;"`
+	//UpdateT  int    `gorm:"type:int;"`
 }
 
 func NewUserModel() (*UserModel) {

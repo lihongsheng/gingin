@@ -23,7 +23,7 @@ func InitDB() {
 		config.ConfigMap.Mysql.DbName,
 		config.ConfigMap.Mysql.Chart,
 	)
-	fmt.Println(dns)
+
 	db, err := gorm.Open(mysql.Open(dns), &gorm.Config{
 		// gorm日志模式：silent
 		Logger: logger.Default.LogMode(logger.Silent),
@@ -50,4 +50,5 @@ func InitDB() {
 	sqlDB.SetMaxOpenConns(100)
 	// SetConnMaxLifetiment 设置连接的最大可复用时间。
 	sqlDB.SetConnMaxLifetime(10 * time.Second)
+	fmt.Println(dns)
 }

@@ -2,30 +2,33 @@ package main
 
 import (
 	"fmt"
-	"gingin/Util"
 	"gingin/config"
+	"gingin/model"
 	"gingin/types"
 	"github.com/gin-gonic/gin"
+	_ "go.etcd.io/etcd/client/v3"
 	"strconv"
+	"sync"
 )
 
 func main() {
-	//初始化DB，后期单独放到bootstrat.go里【启动类】
-	 //model.InitDB()
-	//userModel := new(model.UserModel)
-	//user,err := userModel.FindMany("he",1,10)
-	//fmt.Println(user)
-	//fmt.Println(err)
-	h := Util.NewHashMap(Util.HashCrc)
-	ipList := []string{"192.168.0.1","192.168.0.2","192.168.0.3","192.168.0.4","192.168.0.1#1","192.168.0.2#2","192.168.0.3#3","192.168.0.4#4"}
-	for _, v := range ipList{
-		h.Add(v)
+	model.InitDB()
+   user := model.NewUserModel()
+	fmt.Println(";;;;")
+	u, err := user.GetUser(1)
+	fmt.Println(u)
+	fmt.Println(err)
+   w := new(sync.WaitGroup)
+   w.Add(7)
+	for i := 1; i < 8; i++ {
+		go func() {
+			defer w.Done()
+			u, err := user.GetUser(i)
+			fmt.Println(u)
+			fmt.Println(err)
+		}()
 	}
-	fmt.Println(h.Get("10.10.10.1"))
-
-	for _, v := range h.HashValue{
-		fmt.Println("v:%s",v)
-	}
+	w.Wait()
 }
 
 func bootStrat() {
